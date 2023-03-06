@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Hero from '../../components/hero';
 import { getPets } from '../../api/petfinder';
 import Pet from '../../components/pet';
-// Import useSearchParams
+import { useSearchParams } from 'react-router-dom';
 
 const SearchPage = () => {
 
-  // Get searchParams object from useSearchParams
+  // Get searchParams object from useSearchParams 
+  //we use bracket because useSearchParams() will give us an object that we want to destructure syntaxe
+  const [searchParams] = useSearchParams();
 
-  const petNameToFind = 'REPLACE ME';  // Get query parameter using searchParams object
+  const petNameToFind = searchParams.get('name');  // Get query parameter using searchParams object
 
   const [pets, setPets] = useState([]);
 
